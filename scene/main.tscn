@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d230kehuk6i00"]
+
+[ext_resource type="Texture2D" uid="uid://cibi40at3rhpr" path="res://icon.svg" id="1_itxqv"]
+[ext_resource type="Script" uid="uid://d3vgxpbjij8mc" path="res://script/player.gd" id="1_v0l8b"]
+[ext_resource type="Script" uid="uid://od463pihyisn" path="res://script/obstacle_spawner.gd" id="3_wp4xf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0yc80"]
+radius = 31.016125
+
+[node name="Main" type="Node2D" unique_id=1927266854]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=352592456]
+position = Vector2(63, 97)
+script = ExtResource("1_v0l8b")
+
+[node name="Icon" type="Sprite2D" parent="Player" unique_id=1785464292]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_itxqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1403064651]
+shape = SubResource("CircleShape2D_0yc80")
+
+[node name="ObstacleSpawner" type="Marker2D" parent="." unique_id=1233210148]
+position = Vector2(1204, 333)
+script = ExtResource("3_wp4xf")
+
+[node name="Timer" type="Timer" parent="ObstacleSpawner" unique_id=622928070]
+autostart = true
+
+[connection signal="timeout" from="ObstacleSpawner/Timer" to="ObstacleSpawner" method="_on_timer_timeout"]

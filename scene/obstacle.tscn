@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://chmgp4osyf2p3"]
+
+[ext_resource type="Script" uid="uid://bfv6ow36647nd" path="res://script/obstacle.gd" id="1_nyukl"]
+[ext_resource type="Texture2D" uid="uid://cibi40at3rhpr" path="res://icon.svg" id="2_25435"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yc80"]
+size = Vector2(52, 276)
+
+[node name="Obstacle" type="StaticBody2D" unique_id=354125086]
+script = ExtResource("1_nyukl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1202748854]
+position = Vector2(0, 232)
+shape = SubResource("RectangleShape2D_0yc80")
+
+[node name="Icon2" type="Sprite2D" parent="CollisionShape2D" unique_id=678645916]
+scale = Vector2(0.40624997, 2.15625)
+texture = ExtResource("2_25435")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=737302508]
+position = Vector2(0, -238)
+shape = SubResource("RectangleShape2D_0yc80")
+
+[node name="Icon" type="Sprite2D" parent="CollisionShape2D2" unique_id=282157963]
+position = Vector2(0, -2.0000153)
+scale = Vector2(0.40624997, 2.15625)
+texture = ExtResource("2_25435")
