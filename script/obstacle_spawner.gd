@@ -1,10 +1,13 @@
 extends Marker2D
 
+signal  scored
+
 const OBSTACLE = preload("uid://chmgp4osyf2p3")
 
 
-
 func _on_timer_timeout() -> void:
-	print(0101010)
-	var instance :=OBSTACLE.instantiate()
+	var instance : Obstacle = OBSTACLE.instantiate()
+	instance.position.y = randf_range(-100, 100)
 	add_child(instance)
+	
+	instance.scored.connect(scored.emit)
