@@ -15,8 +15,14 @@ run/main_scene="uid://d230kehuk6i00"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Soundtrack="*uid://br5j7clal0xda"
+
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

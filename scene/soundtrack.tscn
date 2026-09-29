@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://br5j7clal0xda"]
+
+[ext_resource type="AudioStream" uid="uid://cbofm7b6mpnmu" path="res://Asset/Caketown 1.mp3" id="1_nr1y7"]
+
+[node name="SoundTrack" type="AudioStreamPlayer" unique_id=789527972]
+stream = ExtResource("1_nr1y7")
+autoplay = true
+parameters/looping = true

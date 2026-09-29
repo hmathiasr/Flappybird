@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cjjxx40rcg6s6"]
+
+[ext_resource type="Script" uid="uid://dnyc5gun0silh" path="res://script/main_menu.gd" id="1_3er1b"]
+[ext_resource type="Texture2D" uid="uid://73g4hlao8ngc" path="res://Asset/background.png" id="2_hxu56"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxu56"]
+bg_color = Color(0.26143238, 0.10218657, 0.005380272, 1)
+border_width_left = 3
+border_width_bottom = 3
+border_color = Color(0.18023717, 0.31266546, 0.061709598, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 4
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+expand_margin_left = 14.0
+expand_margin_right = 14.0
+
+[sub_resource type="Theme" id="Theme_3er1b"]
+Button/styles/normal = SubResource("StyleBoxFlat_hxu56")
+
+[node name="MainMenu" type="Control" unique_id=20618003]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3er1b")
+script = ExtResource("1_3er1b")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1350328177]
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 713.0
+texture = ExtResource("2_hxu56")
+
+[node name="GameTitle" type="RichTextLabel" parent="." unique_id=9755527]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.5
+offset_top = -181.5
+offset_right = 187.5
+offset_bottom = -98.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[wave]Flappy [b]BirdD"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Author" type="Label" parent="." unique_id=225796968]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.5
+offset_top = -23.0
+offset_right = 88.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Criador por: Humberto"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1689567487]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -50.5
+offset_right = 44.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=1732048123]
+layout_mode = 2
+text = "Jogar"
+
+[node name="Fullscreen" type="Button" parent="VBoxContainer" unique_id=1640475757]
+layout_mode = 2
+text = "Tela Cheia"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=542255513]
+layout_mode = 2
+text = "Sair"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
