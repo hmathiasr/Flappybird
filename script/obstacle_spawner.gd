@@ -4,6 +4,9 @@ signal  scored
 
 const OBSTACLE = preload("uid://chmgp4osyf2p3")
 
+func _ready() -> void:
+	EventBus.game_ended.connect($Timer.stop)
+
 
 func _on_timer_timeout() -> void:
 	var instance : Obstacle = OBSTACLE.instantiate()

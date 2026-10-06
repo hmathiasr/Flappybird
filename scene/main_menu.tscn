@@ -1,22 +1,8 @@
 [gd_scene format=3 uid="uid://cjjxx40rcg6s6"]
 
+[ext_resource type="Theme" uid="uid://c8q5a3hgwf861" path="res://resource/flappy_end_theme.tres" id="1_2fwvj"]
 [ext_resource type="Script" uid="uid://dnyc5gun0silh" path="res://script/main_menu.gd" id="1_3er1b"]
 [ext_resource type="Texture2D" uid="uid://73g4hlao8ngc" path="res://Asset/background.png" id="2_hxu56"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxu56"]
-bg_color = Color(0.26143238, 0.10218657, 0.005380272, 1)
-border_width_left = 3
-border_width_bottom = 3
-border_color = Color(0.18023717, 0.31266546, 0.061709598, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 4
-corner_radius_bottom_right = 9
-corner_radius_bottom_left = 9
-expand_margin_left = 14.0
-expand_margin_right = 14.0
-
-[sub_resource type="Theme" id="Theme_3er1b"]
-Button/styles/normal = SubResource("StyleBoxFlat_hxu56")
 
 [node name="MainMenu" type="Control" unique_id=20618003]
 layout_mode = 3
@@ -25,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_3er1b")
+theme = ExtResource("1_2fwvj")
 script = ExtResource("1_3er1b")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1350328177]

@@ -1,12 +1,17 @@
 extends CharacterBody2D
 
+signal died
 
 var alive: bool = true
+var is_game_started: bool = false
 
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var death_sound: AudioStreamPlayer = $DeathSound
 
 func _physics_process(delta: float) -> void:
+	if is_game_started == false:
+		return
+
 	var gravity = get_gravity()
 	velocity += gravity * 0.02
 	
@@ -23,8 +28,13 @@ func _physics_process(delta: float) -> void:
 	if get_last_slide_collision() != null:
 		die()
 	
+	
+	
 func die() -> void:
 	alive = false
 	death_sound.play()
-	await get_tree().create_timer(1.0).timeout
-	get_tree().quit()
+	died.emit()
+
+
+func _on_main_game_started() -> void:
+	is_game_started = true

@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://bv8el5n72lnpu" path="res://Asset/jump.sfxr" id="4_0ha60"]
 [ext_resource type="AudioStream" uid="uid://dsam2np47fnwg" path="res://Asset/death.sfxr" id="5_p1hux"]
 [ext_resource type="AudioStream" uid="uid://dg74hbwj4fddd" path="res://Asset/Score.sfxr" id="6_4j5ol"]
+[ext_resource type="PackedScene" uid="uid://cdg271m0frfcq" path="res://scene/game_over_screen.tscn" id="8_b5f6u"]
+[ext_resource type="Theme" uid="uid://c8q5a3hgwf861" path="res://resource/flappy_end_theme.tres" id="8_k65ib"]
+[ext_resource type="FontFile" uid="uid://b111un5n4sr6w" path="res://Asset/UnifrakturMaguntia-Regular.ttf" id="9_tqoya"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yc80"]
 radius = 31.016125
@@ -88,11 +91,11 @@ stream = SubResource("AudioStreamRandomizer_0yc80")
 stream = ExtResource("5_p1hux")
 
 [node name="ObstacleSpawner" type="Marker2D" parent="." unique_id=1233210148]
-position = Vector2(1204, 333)
+position = Vector2(1297, 333)
 script = ExtResource("3_wp4xf")
 
 [node name="Timer" type="Timer" parent="ObstacleSpawner" unique_id=622928070]
-autostart = true
+wait_time = 1.5
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=577579173]
 
@@ -104,11 +107,36 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme = ExtResource("8_k65ib")
 text = "BUG"
+
+[node name="GameOverScreen" parent="HUD" unique_id=146967242 instance=ExtResource("8_b5f6u")]
+
+[node name="Tutorial" type="RichTextLabel" parent="HUD" unique_id=373995222]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -20.0
+offset_right = 244.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("9_tqoya")
+theme_override_font_sizes/normal_font_size = 23
+text = "[wave]Para pular, aperte: Espaço ou A (controle)"
+fit_content = true
 
 [node name="Scoresound" type="AudioStreamPlayer" parent="." unique_id=1540522706]
 stream = ExtResource("6_4j5ol")
 
+[connection signal="game_started" from="." to="Player" method="_on_main_game_started"]
+[connection signal="game_started" from="." to="ObstacleSpawner/Timer" method="start"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="screen_exited" from="Player/VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]
 [connection signal="scored" from="ObstacleSpawner" to="." method="_on_obstacle_spawner_scored"]
 [connection signal="timeout" from="ObstacleSpawner/Timer" to="ObstacleSpawner" method="_on_timer_timeout"]
